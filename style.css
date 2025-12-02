@@ -62,7 +62,7 @@ h1 {
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
     white-space: nowrap;
     width: 100%;
-    animation: shimmer 9s linear infinite;
+    animation: shimmer 6s linear infinite;
 }
 
 @keyframes shimmer {
