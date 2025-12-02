@@ -55,23 +55,23 @@ h1 {
     margin-bottom: 1rem;
     line-height: 1;
     background: linear-gradient(90deg, #474747, #ffffff, #ffffff, #ffffff, #474747);
-    background-size: 200%;
+    background-size: 400%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
     white-space: nowrap;
     width: 100%;
-    animation: shimmer 6s linear infinite;
+    animation: shimmer 30s linear infinite;
 }
 
 @keyframes shimmer {
     0% {
-        background-position: 200% center;
+        background-position: 400% center;
     }
 
     100% {
-        background-position: -200% center;
+        background-position: -400% center;
     }
 }
 
