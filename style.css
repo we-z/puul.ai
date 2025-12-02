@@ -32,7 +32,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4rem 0;
 }
 
 .content {
@@ -79,7 +78,7 @@ h1 {
     font-size: 2rem;
     font-weight: 400;
     color: #94a3b8;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     letter-spacing: -0.01em;
     max-width: 900px;
 }
@@ -89,7 +88,7 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     width: 100%;
-    margin-bottom: 4rem;
+    margin-top: 4rem;
 }
 
 .feature-card {
@@ -128,7 +127,7 @@ h1 {
 }
 
 .contact {
-    margin-top: 1rem;
+    margin: 1rem;
 }
 
 .contact-btn {
@@ -138,7 +137,7 @@ h1 {
     padding: 1rem 2.5rem;
     border-radius: 100px;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     text-decoration: none;
     transition: all 0.2s ease;
     letter-spacing: -0.01em;
@@ -186,6 +185,7 @@ h1 {
 @media (max-width: 768px) {
     .features {
         grid-template-columns: 1fr;
+        margin-top: 2rem;
     }
 
     .feature-card {
@@ -203,5 +203,10 @@ h1 {
 
     .subtitle {
         font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-btn {
+        font-size: 1rem;
     }
 }
