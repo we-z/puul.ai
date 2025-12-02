@@ -143,11 +143,14 @@ h1 {
     text-decoration: none;
     transition: all 0.2s ease;
     letter-spacing: -0.01em;
+    border: 1px solid #ffffff;
 }
 
 .contact-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    transform: scale(1.2);
+    background: #000000;
+    color: #ffffff;
+    border-radius: 10px;
 }
 
 
