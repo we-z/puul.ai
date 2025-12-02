@@ -49,7 +49,7 @@ body {
 }
 
 h1 {
-    font-size: 16cqi;
+    font-size: 19cqi;
     font-weight: 800;
     letter-spacing: -0.04em;
     margin-bottom: 1rem;
@@ -99,7 +99,7 @@ h1 {
 
 .feature-icon {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .feature-card h3 {
@@ -174,9 +174,13 @@ h1 {
         grid-template-columns: 1fr;
     }
 
+    .feature-card {
+        padding: 1.5rem;
+    }
+
 
     .feature-card h3 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .feature-card p {
