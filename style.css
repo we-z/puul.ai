@@ -54,7 +54,7 @@ h1 {
     letter-spacing: -0.04em;
     margin-bottom: 1rem;
     line-height: 1;
-    background: linear-gradient(90deg, #474747, #ffffff, #ffffff, #ffffff, #474747);
+    background: linear-gradient(90deg, #303030, #ffffff, #ffffff, #ffffff, #303030);
     background-size: 400%;
     -webkit-background-clip: text;
     background-clip: text;
