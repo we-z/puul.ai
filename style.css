@@ -54,13 +54,25 @@ h1 {
     letter-spacing: -0.04em;
     margin-bottom: 1rem;
     line-height: 1;
-    background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+    background: linear-gradient(90deg, #474747, #ffffff, #ffffff, #ffffff, #474747);
+    background-size: 200%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
     white-space: nowrap;
     width: 100%;
+    animation: shimmer 9s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% center;
+    }
+
+    100% {
+        background-position: -200% center;
+    }
 }
 
 .subtitle {
