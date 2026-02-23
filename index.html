@@ -1,81 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verilog & Netlist Training Datasets</title>
     <meta name="description" content="Novel datasets to accelerate AI for chip design">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            padding: 2rem;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-
-        .content {
-            text-align: left;
-            max-width: 600px;
-            padding-top: 2rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .contact-btn {
-            display: inline-block;
-            color: blue;
-            padding: 0.875rem 0rem;
-            font-size: 1.2rem;
-            text-decoration: none;
-        }
-
-        .contact-btn:hover {
-            text-decoration: underline;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { min-height: 100vh; padding: 2rem; display: flex; justify-content: center; align-items: flex-start; }
+        .content { text-align: left; max-width: 600px; padding-top: 2rem; }
+        h1 { font-size: 2rem; margin-bottom: 1.5rem; }
+        p { font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.6; }
+        .contact-btn { display: inline-block; color: blue; padding: 0.875rem 0rem; font-size: 1.2rem; text-decoration: none; }
+        .contact-btn:hover { text-decoration: underline; }
+        ul { font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
     </style>
 </head>
-
 <body>
     <div class="content">
         <h1>Verilog & Netlist Training Datasets to Accelerate AI for Chip Design</h1>
-        <p class="subtitle">
-            We provide over 100B tokens of raw Verilog and SystemVerilog novel code that SOTA models have not been
-            trained on. The training data includes RTL and testbenches (both synthesizable and behavioral) across GPUs,
-            TPUs, ASICs, FPGAs, NVIDIA DLAs, AMD Instinct architectures, and related systems.
-            <br><br>
-            It is a full-spectrum corpus for ML/RL training in semiconductors, focused on accelerating chip design for
-            AI and improving HDL / UVM code generation. The dataset is specifically curated to help models master
-            difficult chip design challenges, including floorplanning, square packing, timing closure, clock domain
-            crossing (CDC), and power-aware RTL optimization.
-            <br><br>
-            Access can be structured as non-exclusive training, or exclusive (field-limited or time-bound) licenses,
-            depending on your needs. All options restrict redistribution of raw data, while ensuring your team retains
-            full ownership of any trained models and outputs.
+        <p>
+            We provide over 100B tokens of novel Verilog and SystemVerilog code. The training data includes RTL and
+            testbenches across GPUs, TPUs, ASICs, FPGAs, NVIDIA DLAs, and AMD CDNA architectures.
+        </p>
+        <p>The dataset covers difficult chip design challenges and architectures:</p>
+        <ul>
+            <li><strong>Floorplanning</strong> — Optimizing block placement to minimize area, wirelength, and congestion</li>
+            <li><strong>Timing closure</strong> — Meeting setup/hold constraints across millions of paths under PVT variation</li>
+            <li><strong>Clock domain crossing</strong> — Synchronizing signals between asynchronous clock domains</li>
+            <li><strong>Power-aware RTL</strong> — Reducing dynamic and leakage power while maintaining performance</li>
+            <li><strong>Systolic arrays & tensor cores</strong> — Parallel matrix operations for ML accelerators</li>
+            <li><strong>Network-on-chip</strong> — Scalable on-chip interconnects for multi-core communication</li>
+            <li><strong>Custom DMA engines</strong> — Efficient data movement between memory hierarchies</li>
+        </ul>
+        <p>
+            Access can be structured as non-exclusive or exclusive licenses. All options restrict redistribution
+            while ensuring your team retains full ownership of trained models and outputs.
         </p>
         <div class="contact" style="display: flex; gap: 1.5rem;">
-            <a href="https://calendly.com/yousefsalem00/30min" class="contact-btn" target="_blank">Schedule a
-                Call</a>
-            <a href="mailto:root@puul.ai?subject=Puul%20AI%20Inquiry" class="contact-btn">Contact by
-                email</a>
+            <a href="https://calendly.com/yousefsalem00/30min" class="contact-btn" target="_blank">Schedule a Call</a>
+            <a href="mailto:root@puul.ai?subject=Puul%20AI%20Inquiry" class="contact-btn">Contact by email</a>
         </div>
     </div>
 </body>
-
 </html>
