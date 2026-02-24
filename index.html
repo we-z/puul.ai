@@ -15,6 +15,7 @@
         .contact-btn:hover { text-decoration: underline; }
         ul { font-size: 1.2rem; line-height: 1.6; margin-bottom: 2rem; padding-left: 1.5rem; }
         li { margin-bottom: 0.5rem; }
+        .section-title { font-size: 1.35rem; text-decoration: underline; margin-bottom: 1rem; }
     </style>
 </head>
 <body>
@@ -26,18 +27,28 @@
             including systolic arrays, tensor cores, vector ALUs, and MAC units.
         </p>
         <p>The dataset covers difficult chip design challenges and architectures:</p>
+        <p class="section-title">Processor & compute architectures:</p>
+        <ul>
+            <li><strong>RISC-V cores</strong>: Custom RISC-V pipelines, privilege modes, and ISA extensions</li>
+            <li><strong>Arm Cortex & Neoverse</strong>: Application and server-class processor subsystems</li>
+            <li><strong>Systolic arrays & tensor cores</strong>: Parallel matrix operations for ML accelerators</li>
+            <li><strong>NPU & inference engines</strong>: Neural processing units for on-device AI acceleration</li>
+        </ul>
+        <p class="section-title">Interconnects & memory:</p>
+        <ul>
+            <li><strong>Chiplet & UCIe interconnects</strong>: Die-to-die interfaces for multi-chiplet SoC integration</li>
+            <li><strong>CXL & cache-coherent fabrics</strong>: Coherent memory pooling and disaggregated compute</li>
+            <li><strong>PCIe & NVLink controllers</strong>: High-bandwidth host and device interconnect logic</li>
+            <li><strong>HBM & DDR memory controllers</strong>: High-bandwidth and standard DRAM interface RTL</li>
+            <li><strong>Network-on-chip</strong>: Scalable on-chip interconnects for multi-core communication</li>
+            <li><strong>Custom DMA engines</strong>: Efficient data movement between memory hierarchies</li>
+        </ul>
+        <p class="section-title">Physical design & RTL challenges:</p>
         <ul>
             <li><strong>Floorplanning</strong>: Optimizing block placement to minimize area, wirelength, and congestion</li>
             <li><strong>Timing closure</strong>: Meeting setup/hold constraints across millions of paths under PVT variation</li>
             <li><strong>Clock domain crossing</strong>: Synchronizing signals between asynchronous clock domains</li>
             <li><strong>Power-aware RTL</strong>: Reducing dynamic and leakage power while maintaining performance</li>
-            <li><strong>Systolic arrays & tensor cores</strong>: Parallel matrix operations for ML accelerators</li>
-            <li><strong>SIMD & vector pipelines</strong>: Single-instruction, multiple-data execution across wide datapaths</li>
-            <li><strong>Von Neumann & Harvard architectures</strong>: Shared vs. split instruction/data memory hierarchies</li>
-            <li><strong>VLIW & superscalar cores</strong>: Exploiting instruction-level parallelism through static and dynamic scheduling</li>
-            <li><strong>Dataflow architectures</strong>: Token-driven execution where operations fire as operands become available</li>
-            <li><strong>Network-on-chip</strong>: Scalable on-chip interconnects for multi-core communication</li>
-            <li><strong>Custom DMA engines</strong>: Efficient data movement between memory hierarchies</li>
         </ul>
         <p>
             Access can be structured as non-exclusive or exclusive licenses. All options restrict redistribution
