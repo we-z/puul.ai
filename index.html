@@ -22,37 +22,36 @@
     <div class="content">
         <h1>Verilog & Netlist Training Datasets to Accelerate AI for Chip Design</h1>
         <p>
-            We provide over 100B tokens of novel Verilog and SystemVerilog code. The training data includes RTL and
-            testbenches across GPUs, TPUs, ASICs, FPGAs, NVIDIA DLAs, and AMD CDNA architectures,
-            including systolic arrays, tensor cores, vector ALUs, and MAC units.
+            Over 100 billion tokens of production-grade Verilog and SystemVerilog, purpose-built to train
+            the next generation of AI-driven chip design tools. This is the dataset your EDA and
+            silicon teams need to move from copilot prototypes to models that close timing, generate
+            synthesizable RTL, and accelerate tapeout schedules.
         </p>
-        <p>The dataset covers difficult chip design challenges and architectures:</p>
-        <p class="section-title">Processor & compute architectures:</p>
+        <p>Depth and breadth across the architectures that matter most:</p>
+        <p class="section-title">Processor & accelerator IP:</p>
         <ul>
-            <li><strong>RISC-V cores</strong>: Custom RISC-V pipelines, privilege modes, and ISA extensions</li>
-            <li><strong>Arm Cortex & Neoverse</strong>: Application and server-class processor subsystems</li>
-            <li><strong>Systolic arrays & tensor cores</strong>: Parallel matrix operations for ML accelerators</li>
-            <li><strong>NPU & inference engines</strong>: Neural processing units for on-device AI acceleration</li>
+            <li><strong>GPU shader cores & tensor cores</strong>: SIMD pipelines, warp schedulers, and matrix multiply units at the scale of modern datacenter GPUs</li>
+            <li><strong>Custom TPU & NPU datapaths</strong>: Systolic arrays, activation pipelines, and weight-stationary architectures for training and inference silicon</li>
+            <li><strong>Arm Cortex / Neoverse & RISC-V cores</strong>: Out-of-order pipelines, privilege modes, ISA extensions, and SoC integration logic for mobile through server-class chips</li>
+            <li><strong>On-device ML engines</strong>: Neural engine and DSP subsystems for always-on, power-constrained edge inference</li>
         </ul>
-        <p class="section-title">Interconnects & memory:</p>
+        <p class="section-title">Interconnects, memory & IO:</p>
         <ul>
-            <li><strong>Chiplet & UCIe interconnects</strong>: Die-to-die interfaces for multi-chiplet SoC integration</li>
-            <li><strong>CXL & cache-coherent fabrics</strong>: Coherent memory pooling and disaggregated compute</li>
-            <li><strong>PCIe & NVLink controllers</strong>: High-bandwidth host and device interconnect logic</li>
-            <li><strong>HBM & DDR memory controllers</strong>: High-bandwidth and standard DRAM interface RTL</li>
-            <li><strong>Network-on-chip</strong>: Scalable on-chip interconnects for multi-core communication</li>
-            <li><strong>Custom DMA engines</strong>: Efficient data movement between memory hierarchies</li>
+            <li><strong>NVLink, PCIe 6.0 & UCIe</strong>: High-bandwidth die-to-die and chip-to-chip interconnect controllers for multi-GPU and chiplet-based systems</li>
+            <li><strong>HBM3 & LPDDR5 memory controllers</strong>: PHY-level and controller RTL for the memory interfaces driving AI training and mobile SoCs</li>
+            <li><strong>CXL & cache-coherent fabrics</strong>: Coherent memory pooling, switch logic, and protocol engines for disaggregated datacenter architectures</li>
+            <li><strong>Network-on-chip & DMA engines</strong>: Scalable mesh/ring interconnects and multi-channel DMA for thousand-core SoCs</li>
         </ul>
-        <p class="section-title">Physical design & RTL challenges:</p>
+        <p class="section-title">Physical design & tapeout challenges:</p>
         <ul>
-            <li><strong>Floorplanning</strong>: Optimizing block placement to minimize area, wirelength, and congestion</li>
-            <li><strong>Timing closure</strong>: Meeting setup/hold constraints across millions of paths under PVT variation</li>
-            <li><strong>Clock domain crossing</strong>: Synchronizing signals between asynchronous clock domains</li>
-            <li><strong>Power-aware RTL</strong>: Reducing dynamic and leakage power while maintaining performance</li>
+            <li><strong>Timing closure at 3nm/5nm</strong>: Multi-million-path STA, OCV-aware optimization, and signoff-quality constraint management</li>
+            <li><strong>Advanced floorplanning</strong>: Macro placement, power grid synthesis, and congestion-driven partitioning for billion-transistor designs</li>
+            <li><strong>Clock domain crossing & async interfaces</strong>: CDC verification patterns, synchronizer insertion, and metastability-safe handshake protocols</li>
+            <li><strong>Power-aware RTL & DVFS</strong>: Multi-voltage island design, power gating sequences, and dynamic voltage-frequency scaling controllers</li>
         </ul>
         <p>
-            Access can be structured as non-exclusive or exclusive licenses. All options restrict redistribution
-            while ensuring your team retains full ownership of trained models and outputs.
+            Exclusive and non-exclusive licenses available. You retain full ownership of all trained
+            models and outputs. We supply the data, you build the competitive advantage.
         </p>
         <div class="contact" style="display: flex; gap: 1.5rem;">
             <a href="https://calendly.com/yousefsalem00/30min" class="contact-btn" target="_blank">Schedule a Call</a>
