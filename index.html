@@ -37,27 +37,70 @@
             <a href="https://calendly.com/yousefsalem00/30min" class="contact-btn" target="_blank">Schedule a Call</a>
             <a href="mailto:root@puul.ai?subject=Puul%20AI%20Inquiry" class="contact-btn">Contact by email</a>
         </div>
-        <p style="font-size: 1.5rem; font-weight: bold;">Example architectures:</p>
-        <p class="section-title">Processor & accelerator IP:</p>
+        <p style="font-size: 1.5rem; font-weight: bold;">By chip type:</p>
+        <p class="section-title">TPU</p>
         <ul>
-            <li><strong>Systolic arrays</strong>: TPU and ASIC systolic arrays, matrix multiplication units, activation pipelines, and weight-stationary architectures for training and inference silicon</li>
-            <li><strong>GPU shader cores & tensor cores</strong>: SIMD pipelines, warp schedulers, and matrix multiply units at the scale of modern datacenter GPUs</li>
-            <li><strong>Arm Cortex / Neoverse & RISC-V cores</strong>: Out-of-order pipelines, privilege modes, ISA extensions, and SoC integration logic for mobile through server-class chips</li>
-            <li><strong>On-device ML engines</strong>: Neural engine and DSP subsystems for always-on, power-constrained edge inference</li>
+            <li><strong>Systolic arrays</strong>: Weight-stationary, output-stationary, and row-stationary dataflows for matrix multiplication in training and inference silicon</li>
+            <li><strong>Tensor processing pipelines</strong>: Activation functions, accumulator chains, and configurable NxN matrix multiply units</li>
+            <li><strong>AI accelerator SoCs</strong>: End-to-end TPU-style designs with on-chip SRAM, DMA engines, and host interfaces</li>
         </ul>
-        <p class="section-title">Interconnects, memory & IO:</p>
+        <p class="section-title">GPU</p>
         <ul>
-            <li><strong>NVLink, PCIe 6.0 & UCIe</strong>: High-bandwidth die-to-die and chip-to-chip interconnect controllers for multi-GPU and chiplet-based systems</li>
-            <li><strong>HBM3 & LPDDR5 memory controllers</strong>: PHY-level and controller RTL for the memory interfaces driving AI training and mobile SoCs</li>
-            <li><strong>CXL & cache-coherent fabrics</strong>: Coherent memory pooling, switch logic, and protocol engines for disaggregated datacenter architectures</li>
-            <li><strong>Network-on-chip & DMA engines</strong>: Scalable mesh/ring interconnects and multi-channel DMA for thousand-core SoCs</li>
+            <li><strong>Shader cores & SIMD pipelines</strong>: Warp schedulers, register files, and execution units for GPGPU compute</li>
+            <li><strong>Tensor & matrix cores</strong>: Dedicated FP16/INT8 matrix multiply units for deep learning workloads</li>
+            <li><strong>2D/3D graphics engines</strong>: Rasterizers, framebuffer controllers, display pipelines, and video processing</li>
         </ul>
-        <p class="section-title">Physical design & tapeout challenges:</p>
+        <p class="section-title">CPU</p>
         <ul>
-            <li><strong>Timing closure at 3nm/5nm</strong>: Multi-million-path STA, OCV-aware optimization, and signoff-quality constraint management</li>
-            <li><strong>Advanced floorplanning</strong>: Macro placement, power grid synthesis, and congestion-driven partitioning for billion-transistor designs</li>
-            <li><strong>Clock domain crossing & async interfaces</strong>: CDC verification patterns, synchronizer insertion, and metastability-safe handshake protocols</li>
-            <li><strong>Power-aware RTL & DVFS</strong>: Multi-voltage island design, power gating sequences, and dynamic voltage-frequency scaling controllers</li>
+            <li><strong>RISC-V cores</strong>: Single-cycle through superscalar out-of-order implementations, privilege modes, and ISA extensions</li>
+            <li><strong>ARM Cortex & custom ARM</strong>: Pipelined and multi-cycle ARM processors with SoC integration logic</li>
+            <li><strong>MIPS architectures</strong>: Classic 5-stage pipelines, multi-cycle designs, and full ISA implementations</li>
+            <li><strong>Custom ISA processors</strong>: 8-bit through 64-bit original CPU designs, ALUs, branch predictors, and cache hierarchies</li>
+        </ul>
+        <p class="section-title">DPU</p>
+        <ul>
+            <li><strong>Xilinx DPU inference engines</strong>: DPUCZDX8G and variant configurations for CNN inference on Zynq and ZCU platforms</li>
+            <li><strong>Data processing units</strong>: DAG processing architectures, dual-clock domain processing, and memory pool controllers</li>
+            <li><strong>Network-attached processing</strong>: SmartNIC-style offload engines for packet parsing, classification, and transformation</li>
+        </ul>
+        <p class="section-title">MPU</p>
+        <ul>
+            <li><strong>8-bit & 16-bit microprocessors</strong>: 8051, 6502, PIC, and AVR-compatible implementations in Verilog and VHDL</li>
+            <li><strong>32-bit microcontrollers</strong>: ARM Cortex-M0 based SoCs, OpenMSP430 designs, and embedded processor cores</li>
+            <li><strong>Microcomputer systems</strong>: Complete microprocessor designs with peripherals, memory controllers, and bus interfaces</li>
+        </ul>
+        <p class="section-title">NPU</p>
+        <ul>
+            <li><strong>CNN accelerators</strong>: Convolutional neural network engines with configurable kernel sizes, pooling, and activation layers</li>
+            <li><strong>Neural network processors</strong>: Spiking neural networks, MLP accelerators, and on-chip inference engines</li>
+            <li><strong>Edge ML hardware</strong>: Low-power neural engines for always-on inference, keyword spotting, and image classification</li>
+        </ul>
+        <p class="section-title">ASIC</p>
+        <ul>
+            <li><strong>Complete ASIC flows</strong>: RTL-to-GDSII designs including synthesis, place-and-route, and signoff for tapeout</li>
+            <li><strong>Standard cell & physical design</strong>: Cell libraries, floorplanning, power grid synthesis, and timing closure at advanced nodes</li>
+            <li><strong>Application-specific designs</strong>: Custom cryptographic engines, DSP blocks, communication controllers, and sensor interfaces</li>
+        </ul>
+        <p class="section-title">FPGA</p>
+        <ul>
+            <li><strong>Xilinx & Intel/Altera platforms</strong>: Vivado and Quartus project files, IP integrations, and board-level designs across device families</li>
+            <li><strong>FPGA-based accelerators</strong>: CNN inference, cryptomining, signal processing, and high-speed data acquisition on reconfigurable fabric</li>
+            <li><strong>Prototyping & IP cores</strong>: Reusable FPGA IP for Ethernet, USB, HDMI, SDRAM, SPI, I2C, UART, and PCIe interfaces</li>
+        </ul>
+        <p style="font-size: 1.5rem; font-weight: bold; margin-top: 1rem;">For training AI on chip design:</p>
+        <p class="section-title">Pre-training</p>
+        <ul>
+            <li><strong>Massive RTL corpus</strong>: Verilog, VHDL, and SystemVerilog across 60,000+ projects for language model pre-training on hardware design</li>
+            <li><strong>Full project context</strong>: Not just isolated modules — complete designs with testbenches, constraints, Makefiles, and documentation</li>
+            <li><strong>Architecture diversity</strong>: Processors, accelerators, interconnects, memory controllers, and peripherals spanning every major chip category</li>
+            <li><strong>EDA tool flows</strong>: Synthesis scripts, OpenROAD/Yosys/OpenLane configurations, and physical design collateral</li>
+        </ul>
+        <p class="section-title">Post-training (RL Environments)</p>
+        <ul>
+            <li><strong>UVM & SystemVerilog verification</strong>: Thousands of structured verification environments with scoreboards, monitors, and coverage models that provide automated pass/fail feedback</li>
+            <li><strong>Simulation testbenches</strong>: Cocotb, Verilator, and Icarus Verilog setups for rapid design-simulate-evaluate reward loops</li>
+            <li><strong>Synthesis & timing feedback</strong>: EDA tool integration for area, power, and timing metrics as RL reward signals</li>
+            <li><strong>Benchmark circuits</strong>: Reference designs and known-good implementations for evaluating generated RTL quality</li>
         </ul>
         <p style="font-style: italic; font-size: 1.35rem;">Countless more architectures not listed here. <a href="mailto:root@puul.ai?subject=Puul%20AI%20Inquiry" class="contact-btn">Contact us to inquire.</a></p>
     </div>
