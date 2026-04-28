@@ -20,9 +20,9 @@
 </head>
 <body>
     <div class="content">
-        <h1>Training Data</h1>
+        <h1>Verilog Datasets</h1>
         <p>
-            We offer a massive corpus of VHDL, Verilog, and SystemVerilog, including RL environments, for labs looking to train AI models on chip design.
+            We offer training data for chip design AI: a massive corpus of VHDL, Verilog, and SystemVerilog, including RL environments, for labs looking to train models on hardware design.
         </p>
         <ul>
             <li><strong>60,000 +</strong> projects</li>
@@ -56,6 +56,7 @@
             <li><strong>ARM Cortex & custom ARM</strong>: Pipelined and multi-cycle ARM processors with SoC integration logic</li>
             <li><strong>MIPS architectures</strong>: Classic 5-stage pipelines, multi-cycle designs, and full ISA implementations</li>
             <li><strong>Custom ISA processors</strong>: 8-bit through 64-bit original CPU designs, ALUs, branch predictors, and cache hierarchies</li>
+            <li><strong>VLIW processors</strong>: Very Long Instruction Word architectures with multi-issue execution units, instruction bundling, and static scheduling</li>
         </ul>
         <p class="section-title">DPU</p>
         <ul>
@@ -93,11 +94,38 @@
             <li><strong>FPGA-based accelerators</strong>: CNN inference, cryptomining, signal processing, and high-speed data acquisition on reconfigurable fabric</li>
             <li><strong>Prototyping & IP cores</strong>: Reusable FPGA IP for Ethernet, USB, HDMI, SDRAM, SPI, I2C, UART, and PCIe interfaces</li>
         </ul>
+        <p style="font-size: 1.5rem; font-weight: bold; margin-top: 1rem;">Waveform & Signal Processing:</p>
+        <p class="section-title">Oscilloscopes</p>
+        <ul>
+            <li><strong>FPGA-based digital oscilloscopes</strong>: Complete acquisition systems with ADC interfaces, trigger logic, and VGA/HDMI display on Xilinx Zynq, Artix, and Intel Cyclone platforms</li>
+            <li><strong>Mixed-signal scopes</strong>: Combined analog and logic analyzer designs with FFT analysis, multi-channel capture, and Ethernet/USB readout</li>
+        </ul>
+        <p class="section-title">ADC</p>
+        <ul>
+            <li><strong>SAR ADC</strong>: Successive approximation register converters from 8-bit to 16-bit, including open-source tapeout-ready designs targeting Sky130 and Efabless flows</li>
+            <li><strong>Delta-Sigma ADC</strong>: Oversampling converters with decimation filters for high-resolution audio and sensor applications</li>
+            <li><strong>Xilinx XADC integrations</strong>: Hard-block analog-to-digital configurations across Arty, Basys, Nexys, and Zybo board families</li>
+        </ul>
+        <p class="section-title">DAC</p>
+        <ul>
+            <li><strong>R2R ladder & Sigma-Delta DAC</strong>: Resistor-network and noise-shaped digital-to-analog converters for audio and waveform output</li>
+            <li><strong>MASH & modulated DAC</strong>: Multi-stage noise-shaping architectures and shift-modulated sigma-delta designs, including TinyTapeout variants</li>
+        </ul>
+        <p class="section-title">DDS & Waveform Generation</p>
+        <ul>
+            <li><strong>Direct Digital Synthesizers</strong>: CORDIC-based and LUT-based DDS engines with configurable frequency, phase, and amplitude for sine, square, triangle, and arbitrary waveforms</li>
+            <li><strong>Arbitrary waveform generators</strong>: Function generators with UART/SPI control, multi-channel output, and DDS-FIR filter integration</li>
+        </ul>
+        <p class="section-title">Simulation & Waveform Tooling</p>
+        <ul>
+            <li><strong>VCD, FST & FSDB waveform flows</strong>: Complete RTL simulation pipelines with Icarus Verilog, Verilator, GHDL, GTKWave, and Verdi/Synopsys FSDB for waveform capture and analysis</li>
+            <li><strong>Testbench waveform generation</strong>: Stimulus-from-VCD converters, automated waveform comparison, and CI-integrated simulation templates</li>
+        </ul>
         <p style="font-size: 1.5rem; font-weight: bold; margin-top: 1rem;">For training AI on chip design:</p>
         <p class="section-title">Pre-training</p>
         <ul>
             <li><strong>Massive RTL corpus</strong>: Verilog, VHDL, and SystemVerilog across 60,000+ projects for language model pre-training on hardware design</li>
-            <li><strong>Full project context</strong>: Not just isolated modules — complete designs with testbenches, constraints, Makefiles, and documentation</li>
+            <li><strong>Full project context</strong>: Not just isolated modules, but complete designs with testbenches, constraints, Makefiles, and documentation</li>
             <li><strong>Architecture diversity</strong>: Processors, accelerators, interconnects, memory controllers, and peripherals spanning every major chip category</li>
             <li><strong>EDA tool flows</strong>: Synthesis scripts, OpenROAD/Yosys/OpenLane configurations, and physical design collateral</li>
         </ul>
