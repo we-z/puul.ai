@@ -14,9 +14,14 @@
         .headline-line { display: inline; white-space: nowrap; }
         .hero, .details-column { display: contents; }
         @media (min-width: 721px) {
-            .content { max-width: 1280px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); }
-            .hero { display: block; min-width: 0; container-type: inline-size; }
+            body { min-height: 100vh; min-height: 100dvh; padding: 2rem; align-items: center; }
+            .content { max-width: 1280px; padding-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+            .hero { display: block; min-width: 0; container-type: inline-size; position: sticky; align-self: start; top: var(--hero-top, 2rem); }
+            .hero.is-tall { position: static; }
+            .hero > p:last-child { margin-bottom: 0; }
             .details-column { display: block; min-width: 0; }
+            .details-column > section:first-child > details { margin-top: 0; }
+            .details-column > .sample-request { margin-bottom: 0; }
             h1 { font-size: clamp(2.5rem, 6vw, 6rem); font-size: min(6rem, 15cqw); }
             .headline-line { display: block; }
         }
@@ -348,5 +353,40 @@
         <a class="sample-request" href="mailto:root@puul.ai?subject=Data%20sample%20request&amp;body=Use%20case%3A%0D%0A%0D%0AChip%20category%2Ftype%20%28e.g.%2C%20GPU%2C%20CPU%2C%20SoC%2C%20memory%20controller%29%3A%0D%0A%0D%0AData%20or%20tasks%20needed%3A%0D%0A%0D%0ARequirements%20and%20desired%20scale%3A%0D%0A%0D%0ATimeline%3A">Request Data Sample</a>
         </div>
     </main>
+    <script>
+        (() => {
+            const hero = document.querySelector('.hero');
+            const wide = matchMedia('(min-width: 721px)');
+            let scheduled = false;
+            function update() {
+                scheduled = false;
+                if (!wide.matches) {
+                    hero.style.removeProperty('--hero-top');
+                    hero.classList.remove('is-tall');
+                    return;
+                }
+                const viewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                const height = hero.getBoundingClientRect().height;
+                const edge = 2 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                hero.classList.toggle('is-tall', height > viewport - edge * 2);
+                hero.style.setProperty('--hero-top', Math.max(edge, (viewport - height) / 2) + 'px');
+            }
+            function schedule() {
+                if (!scheduled) {
+                    scheduled = true;
+                    requestAnimationFrame(update);
+                }
+            }
+            window.addEventListener('resize', schedule);
+            window.addEventListener('pageshow', schedule);
+            if (window.visualViewport) window.visualViewport.addEventListener('resize', schedule);
+            if (typeof ResizeObserver !== 'undefined') new ResizeObserver(schedule).observe(hero);
+            if (document.fonts) {
+                document.fonts.ready.then(schedule);
+                document.fonts.addEventListener('loadingdone', schedule);
+            }
+            schedule();
+        })();
+    </script>
 </body>
 </html>
