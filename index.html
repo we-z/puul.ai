@@ -14,12 +14,12 @@
         .headline-line { display: inline; white-space: nowrap; }
         .hero, .details-column { display: contents; }
         @media (min-width: 721px) {
-            body { min-height: 100vh; min-height: 100dvh; padding: 2rem; align-items: center; }
-            .content { max-width: 1280px; padding-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+            body { min-height: 100vh; min-height: 100dvh; padding: 2rem; align-items: flex-start; }
+            .content { max-width: 1280px; margin-top: var(--layout-offset, 0px); padding-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: start; }
             .hero { display: block; min-width: 0; container-type: inline-size; position: sticky; align-self: start; top: var(--hero-top, 2rem); }
             .hero.is-tall { position: static; }
             .hero > p:last-child { margin-bottom: 0; }
-            .details-column { display: block; min-width: 0; }
+            .details-column { display: block; min-width: 0; margin-top: var(--details-offset, 0px); }
             .details-column > section:first-child > details { margin-top: 0; }
             .details-column > .sample-request { margin-bottom: 0; }
             h1 { font-size: clamp(2.5rem, 6vw, 6rem); font-size: min(6rem, 15cqw); }
@@ -356,11 +356,16 @@
     <script>
         (() => {
             const hero = document.querySelector('.hero');
+            const content = document.querySelector('main.content');
+            const right = document.querySelector('.details-column');
             const wide = matchMedia('(min-width: 721px)');
+            const reduced = matchMedia('(prefers-reduced-motion: reduce)');
             let scheduled = false;
-            function update() {
+            function updateLayout() {
                 scheduled = false;
                 if (!wide.matches) {
+                    content.style.removeProperty('--layout-offset');
+                    content.style.removeProperty('--details-offset');
                     hero.style.removeProperty('--hero-top');
                     hero.classList.remove('is-tall');
                     return;
@@ -368,14 +373,26 @@
                 const viewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
                 const height = hero.getBoundingClientRect().height;
                 const edge = 2 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                // Measure a hidden, closed copy so expanded content never recenters the layout.
+                const probe = right.cloneNode(true);
+                probe.setAttribute('aria-hidden', 'true');
+                probe.querySelectorAll('[id]').forEach(node => node.removeAttribute('id'));
+                probe.querySelectorAll('details').forEach(node => {
+                    node.open = false;
+                    node.removeAttribute('style');
+                    node.classList.remove('is-opening', 'is-closing');
+                });
+                Object.assign(probe.style, { position: 'absolute', visibility: 'hidden', pointerEvents: 'none', width: right.getBoundingClientRect().width + 'px', top: '0', left: '0' });
+                content.append(probe);
+                const closedHeight = probe.getBoundingClientRect().height;
+                probe.remove();
+                content.style.setProperty('--layout-offset', Math.max(0, (viewport - edge * 2 - Math.max(height, closedHeight)) / 2 - 28) + 'px');
+                content.style.setProperty('--details-offset', Math.max(0, (height - closedHeight) / 2) + 'px');
                 hero.classList.toggle('is-tall', height > viewport - edge * 2);
-                hero.style.setProperty('--hero-top', Math.max(edge, (viewport - height) / 2) + 'px');
+                hero.style.setProperty('--hero-top', Math.max(edge, (viewport - height) / 2 - 28) + 'px');
             }
             function schedule() {
-                if (!scheduled) {
-                    scheduled = true;
-                    requestAnimationFrame(update);
-                }
+                if (!scheduled) { scheduled = true; requestAnimationFrame(updateLayout); }
             }
             window.addEventListener('resize', schedule);
             window.addEventListener('pageshow', schedule);
@@ -385,6 +402,39 @@
                 document.fonts.ready.then(schedule);
                 document.fonts.addEventListener('loadingdone', schedule);
             }
+            const states = new WeakMap();
+            document.querySelectorAll('details').forEach(details => {
+                const summary = details.querySelector(':scope > summary');
+                if (!summary) return;
+                summary.addEventListener('click', event => {
+                    event.preventDefault();
+                    const previous = states.get(details);
+                    const targetOpen = !(previous ? previous.targetOpen : details.open);
+                    const start = details.getBoundingClientRect().height;
+                    if (previous) previous.animation.cancel();
+                    details.classList.remove('is-opening', 'is-closing');
+                    if (reduced.matches || typeof details.animate !== 'function') {
+                        details.open = targetOpen;
+                        details.style.removeProperty('overflow');
+                        states.delete(details);
+                        return;
+                    }
+                    details.open = true;
+                    const end = targetOpen ? details.getBoundingClientRect().height : summary.getBoundingClientRect().height;
+                    details.style.overflow = 'hidden';
+                    details.classList.add(targetOpen ? 'is-opening' : 'is-closing');
+                    const animation = details.animate([{ height: start + 'px' }, { height: end + 'px' }], { duration: 320, easing: 'cubic-bezier(0.25, 1, 0.5, 1)' });
+                    const state = { targetOpen, animation };
+                    states.set(details, state);
+                    animation.onfinish = () => {
+                        if (states.get(details) !== state) return;
+                        details.open = targetOpen;
+                        details.style.removeProperty('overflow');
+                        details.classList.remove('is-opening', 'is-closing');
+                        states.delete(details);
+                    };
+                });
+            });
             schedule();
         })();
     </script>
