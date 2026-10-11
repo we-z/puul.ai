@@ -80,36 +80,18 @@
             We sell chip design IP and training data to the frontier labs, helping them design chips and build AI for chip design.
         </p>
         <section class="collapsible-region" aria-labelledby="training-title">
-            <details class="collapsible-group">
+            <details class="collapsible-group" open>
                 <summary class="collapsible-summary">
                     <span class="section-chevron" aria-hidden="true"></span>
-                    <h2 id="training-title" class="group-title">Training AI on chip design</h2>
+                    <h2 id="training-title" class="group-title">RL Environments for Chip Design</h2>
                 </summary>
                 <div class="group-content">
-                    <details class="collapsible-section">
-                        <summary class="collapsible-summary">
-                            <span class="section-chevron" aria-hidden="true"></span>
-                            <h3 class="section-title">Pre-training</h3>
-                        </summary>
-                        <ul>
-                            <li><strong>Curated RTL corpus</strong>: Verilog, VHDL, and SystemVerilog organized for language model pre-training on hardware design</li>
-                            <li><strong>Full project context</strong>: Not just isolated modules, but complete designs with testbenches, constraints, Makefiles, and documentation</li>
-                            <li><strong>Architecture diversity</strong>: Processors, accelerators, interconnects, memory controllers, and peripherals spanning every major chip category</li>
-                            <li><strong>EDA tool flows</strong>: Synthesis scripts, OpenROAD/Yosys/OpenLane configurations, and physical design collateral</li>
-                        </ul>
-                    </details>
-                    <details class="collapsible-section">
-                        <summary class="collapsible-summary">
-                            <span class="section-chevron" aria-hidden="true"></span>
-                            <h3 class="section-title">RL Environments</h3>
-                        </summary>
-                        <ul>
-                            <li><strong>Open-source reward verification</strong>: Verilator, Yosys, cocotb, Icarus Verilog, GHDL, GTKWave, OpenROAD, and OpenLane compile, simulate, synthesize, inspect waveforms, and measure implementation results so rewards are grounded in executable hardware behavior</li>
-                            <li><strong>Custom UVM trajectory ports</strong>: Purpose-built UVM ports replay and verify full SystemVerilog trajectories, including intermediate edits, assertions, testbench interactions, coverage, and final RTL, across the entire codebase</li>
-                            <li><strong>Multi-signal reward gates</strong>: Functional correctness, compilation, simulation, synthesis, area, power, timing, coverage, and waveform agreement produce deterministic pass/fail and graded rewards</li>
-                            <li><strong>Evaluation and reference circuits</strong>: Reference designs and known-good implementations for evaluating generated RTL quality</li>
-                        </ul>
-                    </details>
+                    <ul>
+                        <li><strong>Open-source reward verification</strong>: Verilator, Yosys, cocotb, Icarus Verilog, GHDL, GTKWave, OpenROAD, and OpenLane compile, simulate, synthesize, inspect waveforms, and measure implementation results so rewards are grounded in executable hardware behavior</li>
+                        <li><strong>Custom UVM trajectory ports</strong>: Purpose-built UVM ports replay and verify full SystemVerilog trajectories, including intermediate edits, assertions, testbench interactions, coverage, and final RTL, across the entire codebase</li>
+                        <li><strong>Multi-signal reward gates</strong>: Functional correctness, compilation, simulation, synthesis, area, power, timing, coverage, and waveform agreement produce deterministic pass/fail and graded rewards</li>
+                        <li><strong>Evaluation and reference circuits</strong>: Reference designs and known-good implementations for evaluating generated RTL quality</li>
+                    </ul>
                 </div>
             </details>
         </section>
