@@ -10,8 +10,11 @@
         body { min-height: 100vh; padding: 1rem 2rem 2rem; display: flex; justify-content: center; align-items: flex-start; font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; font-weight: 300; font-feature-settings: "ss01" on; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
         button, input, select, textarea { font-family: inherit; font-weight: 400; }
         .content { text-align: left; width: 100%; min-width: 0; max-width: 720px; padding-top: 1rem; }
-        h1 { font-size: min(clamp(4.25rem, 12vw, 6rem), calc((100vw - 4rem) / 6.5)); margin-bottom: 1.5rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.08; }
-        .headline-line { display: block; white-space: nowrap; }
+        h1 { font-size: min(3rem, calc((100vw - 4rem) / 6.5)); margin-bottom: 1.5rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.08; }
+        .headline-line { display: inline; white-space: nowrap; }
+        @media (max-width: 720px) {
+            .headline-line { display: block; }
+        }
         p { font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.4; }
         .contact { margin-bottom: 2.5rem; padding: 0.25rem 0; font-size: 1.2rem; font-weight: 300; line-height: 1.5; }
         .contact-label { margin-bottom: 0.625rem; color: #111; font-size: 1.35rem; font-weight: 400; letter-spacing: -0.01em; }
@@ -76,7 +79,7 @@
 </head>
 <body>
     <main class="content">
-        <h1 aria-label="AI Data for Chip Design"><span class="headline-line">AI Data for</span><span class="headline-line">Chip Design</span></h1>
+        <h1 aria-label="AI Data for Chip Design"><span class="headline-line">AI Data for</span> <span class="headline-line">Chip Design</span></h1>
         <p>
             We sell production-grade RTL code (Verilog, SystemVerilog, VHDL) training data to the frontier AI labs.
         </p>
