@@ -13,6 +13,7 @@
         h1 { font-size: min(3rem, calc((100vw - 4rem) / 6.5)); margin-bottom: 1.5rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.08; }
         .headline-line { display: inline; white-space: nowrap; }
         @media (max-width: 720px) {
+            h1 { font-size: min(clamp(4.25rem, 12vw, 6rem), calc((100vw - 4rem) / 6.5)); }
             .headline-line { display: block; }
         }
         p { font-size: 1.2rem; margin-bottom: 2rem; line-height: 1.4; }
