@@ -12,8 +12,13 @@
         .content { text-align: left; width: 100%; min-width: 0; max-width: 720px; padding-top: 2rem; }
         h1 { font-size: min(3rem, calc((100vw - 4rem) / 6.5)); margin-bottom: 1.5rem; font-weight: 300; letter-spacing: -0.02em; line-height: 1.08; }
         .headline-line { display: inline; white-space: nowrap; }
+        .hero, .details-column { display: contents; }
         @media (min-width: 721px) {
-            h1 { white-space: nowrap; }
+            .content { max-width: 1280px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); }
+            .hero { display: block; min-width: 0; container-type: inline-size; }
+            .details-column { display: block; min-width: 0; }
+            h1 { font-size: clamp(2.5rem, 6vw, 6rem); font-size: min(6rem, 15cqw); }
+            .headline-line { display: block; }
         }
         @media (max-width: 720px) {
             h1 { font-size: min(clamp(4.25rem, 12vw, 6rem), calc((100vw - 4rem) / 6.5)); }
@@ -83,10 +88,13 @@
 </head>
 <body>
     <main class="content">
+        <div class="hero">
         <h1 aria-label="AI Data for Chip Design"><span class="headline-line">AI Data for</span> <span class="headline-line">Chip Design</span></h1>
         <p>
             We sell production-grade RTL code (Verilog, SystemVerilog, VHDL) training data to the frontier AI labs.
         </p>
+        </div>
+        <div class="details-column">
         <section class="collapsible-region" aria-labelledby="training-title">
             <details class="collapsible-group">
                 <summary class="collapsible-summary">
@@ -338,55 +346,7 @@
             </details>
         </section>
         <a class="sample-request" href="mailto:root@puul.ai?subject=Data%20sample%20request&amp;body=Use%20case%3A%0D%0A%0D%0AChip%20category%2Ftype%20%28e.g.%2C%20GPU%2C%20CPU%2C%20SoC%2C%20memory%20controller%29%3A%0D%0A%0D%0AData%20or%20tasks%20needed%3A%0D%0A%0D%0ARequirements%20and%20desired%20scale%3A%0D%0A%0D%0ATimeline%3A">Request Data Sample</a>
+        </div>
     </main>
-    <script>
-        (() => {
-            const heading = document.querySelector('main.content > h1');
-            const content = document.querySelector('main.content');
-            const mobile = matchMedia('(max-width: 720px)');
-            let scheduled = false;
-            let previousWidth = -1;
-            function fitHeading() {
-                scheduled = false;
-                if (mobile.matches) {
-                    heading.style.removeProperty('font-size');
-                    return;
-                }
-                heading.style.fontSize = '3rem';
-                const baseline = parseFloat(getComputedStyle(heading).fontSize);
-                const available = content.getBoundingClientRect().width;
-                const range = document.createRange();
-                range.selectNodeContents(heading);
-                const measured = range.getBoundingClientRect().width;
-                if (available > 0 && measured > 0 && Number.isFinite(baseline)) {
-                    const rootSize = parseFloat(getComputedStyle(document.documentElement).fontSize);
-                    const fitted = Math.min(rootSize * 9, baseline * available * 0.995 / measured);
-                    heading.style.fontSize = fitted + 'px';
-                }
-            }
-            function schedule() {
-                if (!scheduled) {
-                    scheduled = true;
-                    requestAnimationFrame(fitHeading);
-                }
-            }
-            window.addEventListener('resize', schedule);
-            window.addEventListener('pageshow', schedule);
-            if (typeof ResizeObserver !== 'undefined') {
-                new ResizeObserver(entries => {
-                    const width = entries[0].contentRect.width;
-                    if (width !== previousWidth) {
-                        previousWidth = width;
-                        schedule();
-                    }
-                }).observe(content);
-            }
-            if (document.fonts) {
-                document.fonts.ready.then(schedule);
-                document.fonts.addEventListener('loadingdone', schedule);
-            }
-            schedule();
-        })();
-    </script>
 </body>
 </html>
