@@ -89,6 +89,19 @@
             .collapsible-group.is-animating, .collapsible-section.is-animating { transition: none; }
             .collapsible-group.is-opening > .group-content, .collapsible-section.is-opening > ul, .collapsible-section.is-opening > .faq-answer, .collapsible-group.is-closing > .group-content, .collapsible-section.is-closing > ul, .collapsible-section.is-closing > .faq-answer { animation: none; }
         }
+    @media (min-width: 721px) {
+.hero { margin-top: calc(-1 * var(--optical-offset, 0px)); }
+.content { max-width: 1160px; gap: clamp(2rem, 4vw, 3rem); }
+h1 { font-size: min(7rem, 18cqw); line-height: 1; margin-bottom: 2rem; }
+.hero > p { font-size: 1.625rem; line-height: 1.5; }
+.details-column > section > details > summary .group-title { font-size: 2.5rem; line-height: 1; }
+.details-column > section > details { margin-bottom: 3rem; }
+.details-column > section > details > summary { min-height: 0; padding: 0; }
+.details-column > .sample-request { padding: 1.2rem 1rem; font-size: 1.5rem; }
+}
+@media (min-width: 721px) and (max-height: 600px) {
+.details-column > section > details { margin-bottom: 1.5rem; }
+}
     </style>
 </head>
 <body>
@@ -367,12 +380,17 @@
                     content.style.removeProperty('--layout-offset');
                     content.style.removeProperty('--details-offset');
                     hero.style.removeProperty('--hero-top');
+                    hero.style.removeProperty('--optical-offset');
                     hero.classList.remove('is-tall');
                     return;
                 }
                 const viewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
                 const height = hero.getBoundingClientRect().height;
                 const edge = 2 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                const titleSize = parseFloat(getComputedStyle(hero.querySelector('h1')).fontSize);
+                const headingSize = parseFloat(getComputedStyle(right.querySelector('.group-title')).fontSize);
+                const opticalOffset = Math.max(0, (titleSize - headingSize) * 0.16);
+                hero.style.setProperty('--optical-offset', opticalOffset + 'px');
                 // Measure a hidden, closed copy so expanded content never recenters the layout.
                 const probe = right.cloneNode(true);
                 probe.setAttribute('aria-hidden', 'true');
@@ -387,9 +405,9 @@
                 const closedHeight = probe.getBoundingClientRect().height;
                 probe.remove();
                 content.style.setProperty('--layout-offset', Math.max(0, (viewport - edge * 2 - Math.max(height, closedHeight)) / 2 - 28) + 'px');
-                content.style.setProperty('--details-offset', Math.max(0, (height - closedHeight) / 2) + 'px');
+                content.style.setProperty('--details-offset', '0px');
                 hero.classList.toggle('is-tall', height > viewport - edge * 2);
-                hero.style.setProperty('--hero-top', Math.max(edge, (viewport - height) / 2 - 28) + 'px');
+                hero.style.setProperty('--hero-top', (edge + Math.max(0, (viewport - edge * 2 - Math.max(height, closedHeight)) / 2 - 28) - opticalOffset) + 'px');
             }
             function schedule() {
                 if (!scheduled) { scheduled = true; requestAnimationFrame(updateLayout); }
