@@ -71,12 +71,6 @@
             .collapsible-group.is-animating, .collapsible-section.is-animating { transition: none; }
             .collapsible-group.is-opening > .group-content, .collapsible-section.is-opening > ul, .collapsible-section.is-opening > .faq-answer, .collapsible-group.is-closing > .group-content, .collapsible-section.is-closing > ul, .collapsible-section.is-closing > .faq-answer { animation: none; }
         }
-        .rlvr-intro { margin: 0.25rem 0 1rem; }
-        .rlvr-block { padding: 1rem 0; border-top: 1px solid #ddd; }
-        .rlvr-block h3 { margin: 0 0 0.5rem; font-size: 1.25rem; font-weight: 400; line-height: 1.25; }
-        .rlvr-block p { margin: 0 0 0.6rem; font-size: 1.1rem; line-height: 1.5; }
-        .rlvr-block p:last-child { margin-bottom: 0; }
-        .rlvr-tools { color: #555; }
     </style>
 </head>
 <body>
@@ -92,20 +86,7 @@
                     <h2 id="training-title" class="group-title">RLVR tasks</h2>
                 </summary>
                 <div class="group-content">
-                    <p class="rlvr-intro">1000+ RLVR tasks and proprietary chip design IP, available under exclusive or non-exclusive licenses.</p>
-                    <div class="rlvr-block">
-                        <h3>Hardware validation</h3>
-                        <p>Tasks use compilation, simulation, synthesis, and waveform checks to ground rewards in executable hardware behavior. Functional correctness, area, power, timing, and coverage feed deterministic pass/fail results and graded rewards.</p>
-                        <p class="rlvr-tools">Verification tools include Verilator, Yosys, cocotb, Icarus Verilog, GHDL, GTKWave, OpenROAD, and OpenLane.</p>
-                    </div>
-                    <div class="rlvr-block">
-                        <h3>Trajectory checks</h3>
-                        <p>Purpose-built UVM ports replay and verify SystemVerilog trajectories across the codebase, checking intermediate edits, assertions, testbench interactions, coverage, and final RTL.</p>
-                    </div>
-                    <div class="rlvr-block">
-                        <h3>Evaluation and delivery</h3>
-                        <p>Reference designs and known-good implementations are available to support evaluation of generated RTL quality.</p>
-                    </div>
+                    <p>We offer 1000+ RLVR tasks and proprietary chip design IP under exclusive or non-exclusive licenses. Our tasks use compilation, simulation, synthesis, and waveform checks to evaluate generated RTL and produce verifiable rewards. UVM-based checks assess intermediate edits and final designs, while reference designs and known-good implementations support evaluation.</p>
                 </div>
             </details>
         </section>
