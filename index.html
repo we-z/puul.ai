@@ -126,13 +126,6 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
 .coverage-chart { min-width: 0; margin: 1.5rem 0; }
 .coverage-chart h3 { font-size: 1.15rem; line-height: 1.2; font-weight: 400; margin-bottom: 0.45rem; letter-spacing: -0.01em; }
 .coverage-chart figcaption p { font-size: 0.85rem; line-height: 1.45; color: #555; margin-bottom: 1rem; }
-.coverage-axis { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; line-height: 1.3; color: #666; margin-bottom: 0.65rem; }
-.coverage-bars { display: grid; gap: 0.7rem; }
-.coverage-row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 2rem; gap: 0.65rem; align-items: center; font-size: 0.9rem; line-height: 1.3; font-variant-numeric: tabular-nums; }
-.coverage-row > span { min-width: 0; overflow-wrap: anywhere; }
-.coverage-row > span:last-child { text-align: right; }
-.coverage-track { height: 0.8rem; background: #eee; border-radius: 2px; }
-.coverage-track > span { display: block; height: 100%; min-width: 2px; background: #222; border-radius: 2px; }
 .rl-offer > .rl-model-note { font-size: 0.85rem; color: #555; margin-bottom: 0.75rem; }
 
 .rl-module { margin: 1.5rem 0; }
@@ -160,6 +153,13 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
 .reward-method { margin-bottom: 0; }
 .reward-method .section-title { font-size: 0.9rem; line-height: 1.3; font-weight: 400; }
 .reward-method p { margin: 0.5rem 0 0.5rem 1.3rem; }
+
+.coverage-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; line-height: 1.35; }
+.coverage-table thead th { font-size: 0.75rem; color: #666; padding-bottom: 0.45rem; }
+.coverage-table th { font-weight: 300; text-align: left; }
+.coverage-table th, .coverage-table td { padding: 0.4rem 0; }
+.coverage-table th:first-child { padding-right: 1rem; }
+.coverage-table th:last-child, .coverage-table td { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -195,39 +195,39 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
                         <p>Inspected spec-to-RTL packages use 0–1 partial-credit rewards. Hidden tests compare behavior with an independent reference model. Invalid submissions or failed tooling checks receive no reward.</p>
                     </section>
                     <figure class="reward-chart" aria-labelledby="reward-chart-title">
-                        <figcaption><h3 id="reward-chart-title">Recorded mean reward</h3><p>Historical model-specific cohorts · 0–1 reward scale</p></figcaption>
+                        <figcaption><h3 id="reward-chart-title">Selected task examples</h3><p>GPT-6 Astra · medium reasoning · mean reward on a 0–1 scale</p></figcaption>
                         <div class="reward-model">
-                            <div class="reward-model-heading"><h4>GPT-5.6 Sol</h4><strong>0.461</strong></div>
-                            <p>603 tasks · 4,920 attempts · high reasoning</p>
-                            <p class="reward-date">Aug 25–Sep 8, 2026</p>
-                            <div class="reward-track" role="img" aria-label="GPT-5.6 Sol: task-weighted mean reward 0.461 out of one, across 603 recorded task IDs and 4920 attempts."><span style="width:46.077380%"></span></div>
+                            <div class="reward-model-heading"><h4>Cache-way allocation control</h4><strong>0.250</strong></div>
+                            <p>8 attempts · 2 full passes · Sep 9, 2026</p>
+                            <div class="reward-track" role="img" aria-label="Cache-way allocation control: selected GPT-6 Astra medium-reasoning example, mean reward 0.250 out of one across eight attempts, two full passes and six behavioral failures."><span style="width:25%"></span></div>
                         </div>
                         <div class="reward-model">
-                            <div class="reward-model-heading"><h4>Fable 5.1</h4><strong>0.530</strong></div>
-                            <p>16 tasks · 128 attempts · high reasoning</p>
-                            <p class="reward-date">Sep 12–14, 2026</p>
-                            <div class="reward-track" role="img" aria-label="Fable 5.1: task-weighted mean reward 0.530 out of one, across 16 recorded task IDs and 128 attempts."><span style="width:53.016134%"></span></div>
+                            <div class="reward-model-heading"><h4>Startup and warmup control</h4><strong>0.250</strong></div>
+                            <p>8 attempts · 2 full passes · Sep 9, 2026</p>
+                            <div class="reward-track" role="img" aria-label="Startup and warmup control: selected GPT-6 Astra medium-reasoning example, mean reward 0.250 out of one across eight attempts, two full passes and six behavioral failures."><span style="width:25%"></span></div>
                         </div>
                         <div class="reward-scale"><span>0</span><span>0.5</span><span>1</span></div>
-                        <p class="reward-note">Different task cohorts, not a same-task ranking. Scores below full reward show remaining task difficulty.</p>
+                        <p class="reward-note">Selected examples, not an overall model average. Both reached behavioral grading in all eight attempts.</p>
                         <details class="collapsible-section reward-method">
                             <summary class="collapsible-summary"><span class="section-chevron" aria-hidden="true"></span><h4 class="section-title">Measurement scope</h4></summary>
-                            <p>All retained complete, validated eight-attempt cohorts with matching source records; no low-score filter. Repeated cohorts are averaged per task before averaging tasks. Recorded authored revisions do not freeze the full grader/runtime. Rewards include tooling gates; these evaluations do not establish training uplift.</p>
+                            <p>Each example includes all eight recorded attempts: six behavioral failures and two full passes, with no infrastructure errors. Scores match preserved task revisions and primary grades. These examples do not imply all-task unsaturation or establish training uplift.</p>
                         </details>
                     </figure>
                     <figure class="coverage-chart" aria-labelledby="coverage-title">
                         <figcaption><h3 id="coverage-title">Chip-design coverage</h3><p>1,280 categorized task IDs across authoring and evaluated collections; shared copies counted once.</p></figcaption>
-                        <div class="coverage-axis"><span>Chip / task category</span><span>Tasks</span></div>
-                        <div class="coverage-bars" role="img" aria-label="1280 categorized task IDs across authoring and evaluated collections: Memory and cache 383; SoC and control 268; Networking and interfaces 219; CPU 109; Other RTL logic 108; GPU and media 100; Storage 79; AI and accelerators 14.">
-                            <div class="coverage-row"><span>Memory &amp; cache</span><div class="coverage-track"><span style="width:100.000%"></span></div><span>383</span></div>
-                            <div class="coverage-row"><span>SoC &amp; control</span><div class="coverage-track"><span style="width:69.974%"></span></div><span>268</span></div>
-                            <div class="coverage-row"><span>Networking &amp; interfaces</span><div class="coverage-track"><span style="width:57.180%"></span></div><span>219</span></div>
-                            <div class="coverage-row"><span>CPU</span><div class="coverage-track"><span style="width:28.460%"></span></div><span>109</span></div>
-                            <div class="coverage-row"><span>Other RTL logic</span><div class="coverage-track"><span style="width:28.198%"></span></div><span>108</span></div>
-                            <div class="coverage-row"><span>GPU &amp; media</span><div class="coverage-track"><span style="width:26.110%"></span></div><span>100</span></div>
-                            <div class="coverage-row"><span>Storage</span><div class="coverage-track"><span style="width:20.627%"></span></div><span>79</span></div>
-                            <div class="coverage-row"><span>AI &amp; accelerators</span><div class="coverage-track"><span style="width:3.655%"></span></div><span>14</span></div>
-                        </div>
+                        <table class="coverage-table" aria-labelledby="coverage-title">
+                            <thead><tr><th scope="col">Chip / task category</th><th scope="col">Tasks</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">Memory &amp; cache</th><td>383</td></tr>
+                                <tr><th scope="row">SoC &amp; control</th><td>268</td></tr>
+                                <tr><th scope="row">Networking &amp; interfaces</th><td>219</td></tr>
+                                <tr><th scope="row">CPU</th><td>109</td></tr>
+                                <tr><th scope="row">Other RTL logic</th><td>108</td></tr>
+                                <tr><th scope="row">GPU &amp; media</th><td>100</td></tr>
+                                <tr><th scope="row">Storage</th><td>79</td></tr>
+                                <tr><th scope="row">AI &amp; accelerators</th><td>14</td></tr>
+                            </tbody>
+                        </table>
                     </figure>
                     <section class="rl-module" aria-labelledby="rl-delivery-title">
                         <h3 id="rl-delivery-title">What you receive</h3>
