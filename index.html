@@ -203,22 +203,22 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
                             <div class="reward-track" role="img" aria-label="Cache-way allocation control: selected GPT-6 Astra medium-reasoning example, mean reward 0.250 out of one across eight attempts, two full passes and six behavioral failures."><span style="width:25%"></span></div>
                         </div>
                         <div class="reward-model">
-                            <div class="reward-model-heading"><h4>Startup and warmup control</h4><strong>0.250</strong></div>
-                            <p>GPT-6 Astra · medium reasoning</p>
-                            <p>8 attempts · 2 full passes · Sep 9, 2026</p>
-                            <div class="reward-track" role="img" aria-label="Startup and warmup control: selected GPT-6 Astra medium-reasoning example, mean reward 0.250 out of one across eight attempts, two full passes and six behavioral failures."><span style="width:25%"></span></div>
+                            <div class="reward-model-heading"><h4>GPU sample-pattern control</h4><strong>0.084</strong></div>
+                            <p>Qwen3.8-27B · 4-bit MLX · thinking off</p>
+                            <p>8 attempts · Sep 19, 2026</p>
+                            <div class="reward-track" role="img" aria-label="GPU sample-pattern control: selected Qwen3.8-27B 4-bit MLX example with thinking disabled and 64K context, exact mean reward 0.084375 out of one across eight attempts on September 19, 2026."><span style="width:8.4375%"></span></div>
                         </div>
                         <div class="reward-model">
-                            <div class="reward-model-heading"><h4>DRAM refresh and power-state control</h4><strong>0.007</strong></div>
+                            <div class="reward-model-heading"><h4>CPU reorder-buffer retirement</h4><strong>0.210</strong></div>
                             <p>Fable 5.1 · high reasoning</p>
-                            <p>2-attempt screening · Sep 13, 2026</p>
-                            <div class="reward-track" role="img" aria-label="DRAM refresh and power-state control: selected Fable 5.1 high-reasoning example, exact mean reward 0.006927 out of one across two completed screening attempts on September 13, 2026. Both passed tooling and reached behavioral grading."><span style="width:0.6927%"></span></div>
+                            <p>2-attempt screening · Sep 14, 2026</p>
+                            <div class="reward-track" role="img" aria-label="CPU reorder-buffer retirement: selected Fable 5.1 high-reasoning example, exact mean reward 0.209809 out of one across two completed screening attempts on September 14, 2026. One candidate tooling rejection and one behavioral partial-credit result."><span style="width:20.9809%"></span></div>
                         </div>
                         <div class="reward-scale"><span>0</span><span>0.5</span><span>1</span></div>
-                        <p class="reward-note">Selected examples, not overall model averages. Astra: 8 attempts each. Fable: 2-attempt screening.</p>
+                        <p class="reward-note">Selected examples, not overall model averages. Different tasks and evaluation protocols.</p>
                         <details class="collapsible-section reward-method">
                             <summary class="collapsible-summary"><span class="section-chevron" aria-hidden="true"></span><h4 class="section-title">Measurement scope</h4></summary>
-                            <p>Each Astra example includes all eight recorded attempts: six behavioral failures and two full passes, with no infrastructure errors. The Fable screening includes both completed attempts, each scoring 0.006927 after passing tooling and reaching behavioral grading. It is not an eight-attempt qualification result. Scores match preserved task revisions and primary grades; these examples do not establish all-task unsaturation or training uplift.</p>
+                            <p>The Astra example includes eight attempts: six behavioral failures and two full passes. Qwen includes all eight attempts, with an exact mean of 0.084375: five behavioral failures and three candidate tooling rejections. Its recorded runtime used 4-bit MLX, thinking disabled, and 64K context. Fable includes both completed screening attempts: one candidate tooling rejection and one behavioral partial-credit result, averaging 0.209809. No infrastructure errors were recorded. Scores match recorded revisions and primary grades; these examples do not imply current release qualification, all-task unsaturation, a same-task model ranking, or training uplift.</p>
                         </details>
                     </figure>
                     <figure class="coverage-chart" aria-labelledby="coverage-title">
