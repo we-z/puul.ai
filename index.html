@@ -120,26 +120,6 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
 .group-content, .subgroup-content, .faq-answer, li { overflow-wrap: anywhere; }
 }
 
-/* Aggregate evidence stays inside the RL disclosure. */
-.rl-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; margin: 0.5rem 0 1.25rem; }
-.rl-metrics > div { min-width: 0; }
-.rl-metrics strong { display: block; font-size: clamp(1.5rem, 4vw, 2rem); line-height: 1.1; font-weight: 400; letter-spacing: -0.025em; }
-.rl-metrics span { display: block; font-size: 0.8rem; line-height: 1.35; margin-top: 0.45rem; color: #555; }
-.rl-value { font-size: 1rem; line-height: 1.45; margin: 0 0 1.5rem; }
-.rl-chart { min-width: 0; margin: 0 0 1.5rem; padding: 1.1rem; background: #f7f7f7; border-radius: 10px; }
-.rl-chart h3 { font-size: 1.1rem; line-height: 1.2; font-weight: 400; margin-bottom: 0.4rem; letter-spacing: -0.01em; }
-.rl-chart figcaption p, .rl-chart-note, .rl-scope { font-size: 0.8rem; line-height: 1.45; color: #555; margin: 0; }
-.rl-chart figcaption p { margin-bottom: 1rem; }
-.rl-chart-axis, .rl-scale { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.7rem; line-height: 1.3; color: #666; }
-.rl-chart-axis { margin-bottom: 0.55rem; }
-.rl-bars { display: grid; gap: 0.55rem; }
-.rl-bar-row { display: grid; grid-template-columns: 5.1rem minmax(0, 1fr) 1.5rem; gap: 0.6rem; align-items: center; font-size: 0.8rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
-.rl-bar-row > span:last-child { text-align: right; }
-.rl-bar-track { height: 0.8rem; background: #e7e7e7; border-radius: 2px; }
-.rl-bar-track > span, .rl-performance-track > span { display: block; height: 100%; background: #222; border-radius: 2px; }
-.rl-chart-note { margin-top: 1rem; }
-.rl-scope { margin-bottom: 0.75rem; }
-@media (max-width: 360px) { .rl-chart { padding: 0.75rem; } .rl-bar-row { grid-template-columns: 4.8rem minmax(0, 1fr) 1.3rem; gap: 0.35rem; } }
     </style>
 </head>
 <body>
@@ -158,35 +138,9 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
                     <h2 id="training-title" class="group-title">RL Environments</h2>
                 </summary>
                 <div class="group-content">
-                    <div class="rl-metrics" aria-label="Recorded inventory and evaluations">
-                        <div><strong>1,315</strong><span>Catalogued task IDs</span></div>
-                        <div><strong>1,974</strong><span>Saved evaluation runs</span></div>
-                        <div><strong>6,718</strong><span>Attempts in validated runs</span></div>
-                    </div>
-                    <p class="rl-value">Verifiable rewards for hardware-design training.</p>
-                    <figure class="rl-chart" aria-labelledby="rl-distribution-title">
-                        <figcaption><h3 id="rl-distribution-title">Reward distribution</h3><p>GPT-5.6 Sol · 127 selected tasks · 8 attempts each</p></figcaption>
-                        <div class="rl-chart-axis"><span>Mean reward</span><span>Tasks</span></div>
-                        <div class="rl-bars" role="img" aria-label="Mean reward across 127 selected task records: 20 tasks at 0.25 to 0.30; 12 at 0.30 to 0.35; 25 at 0.35 to 0.40; 20 at 0.40 to 0.45; 16 at 0.45 to 0.50; 24 at 0.50 to 0.55; 10 at 0.55 to 0.60."><div class="rl-bar-row"><span>0.25–0.30</span><div class="rl-bar-track"><span style="width:80.00%"></span></div><span>20</span></div>
-<div class="rl-bar-row"><span>0.30–0.35</span><div class="rl-bar-track"><span style="width:48.00%"></span></div><span>12</span></div>
-<div class="rl-bar-row"><span>0.35–0.40</span><div class="rl-bar-track"><span style="width:100.00%"></span></div><span>25</span></div>
-<div class="rl-bar-row"><span>0.40–0.45</span><div class="rl-bar-track"><span style="width:80.00%"></span></div><span>20</span></div>
-<div class="rl-bar-row"><span>0.45–0.50</span><div class="rl-bar-track"><span style="width:64.00%"></span></div><span>16</span></div>
-<div class="rl-bar-row"><span>0.50–0.55</span><div class="rl-bar-track"><span style="width:96.00%"></span></div><span>24</span></div>
-<div class="rl-bar-row"><span>0.55–0.60</span><div class="rl-bar-track"><span style="width:40.00%"></span></div><span>10</span></div></div>
-                        <p class="rl-chart-note">117 of 127 tasks produced varied rewards across attempts.</p>
-                    </figure>
-                    <figure class="rl-chart" aria-labelledby="rl-performance-title">
-                        <figcaption><h3 id="rl-performance-title">Recorded solve rate</h3><p>Same 127 selected tasks · GPT-5.6 Sol · high reasoning</p></figcaption>
-                        <div class="rl-chart-axis"><span>Full passes per task</span><span>Tasks</span></div>
-                        <div class="rl-bars" role="img" aria-label="Full passes in eight attempts: 92 tasks had zero full passes, 10 had one, 10 had two, 9 had three, and 6 had four."><div class="rl-bar-row"><span>0 of 8</span><div class="rl-bar-track"><span style="width:100.00%"></span></div><span>92</span></div>
-<div class="rl-bar-row"><span>1 of 8</span><div class="rl-bar-track"><span style="width:10.87%"></span></div><span>10</span></div>
-<div class="rl-bar-row"><span>2 of 8</span><div class="rl-bar-track"><span style="width:10.87%"></span></div><span>10</span></div>
-<div class="rl-bar-row"><span>3 of 8</span><div class="rl-bar-track"><span style="width:9.78%"></span></div><span>9</span></div>
-<div class="rl-bar-row"><span>4 of 8</span><div class="rl-bar-track"><span style="width:6.52%"></span></div><span>6</span></div></div>
-                        <p class="rl-chart-note">81 of 1,016 attempts fully passed (8.0%). Evaluation records, not a training curve.</p>
-                    </figure>
-                    <p class="rl-scope">Aug 25–Sep 8, 2026. Selected validated runs; authored revisions matched, full runtime not frozen. Not current release certification. Catalogue includes work in progress.</p>
+                    <p>RTL design tasks with automated reward grading.</p>
+                    <p>Task specifications, testbenches, reference implementations, and evaluation records.</p>
+                    <p>Exclusive or non-exclusive package licensing.</p>
                 </div>
             </details>
         </section>
