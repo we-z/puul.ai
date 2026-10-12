@@ -120,6 +120,20 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
 .group-content, .subgroup-content, .faq-answer, li { overflow-wrap: anywhere; }
 }
 
+
+.rl-offer > p { font-size: 1.05rem; line-height: 1.45; margin-bottom: 1rem; }
+.rl-offer > .rl-offer-lead { font-size: 1.25rem; font-weight: 400; }
+.coverage-chart { min-width: 0; margin: 1.5rem 0; }
+.coverage-chart h3 { font-size: 1.15rem; line-height: 1.2; font-weight: 400; margin-bottom: 0.45rem; letter-spacing: -0.01em; }
+.coverage-chart figcaption p { font-size: 0.85rem; line-height: 1.45; color: #555; margin-bottom: 1rem; }
+.coverage-axis { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.75rem; line-height: 1.3; color: #666; margin-bottom: 0.65rem; }
+.coverage-bars { display: grid; gap: 0.7rem; }
+.coverage-row { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 2rem; gap: 0.65rem; align-items: center; font-size: 0.9rem; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.coverage-row > span { min-width: 0; overflow-wrap: anywhere; }
+.coverage-row > span:last-child { text-align: right; }
+.coverage-track { height: 0.8rem; background: #eee; border-radius: 2px; }
+.coverage-track > span { display: block; height: 100%; min-width: 2px; background: #222; border-radius: 2px; }
+.rl-offer > .rl-model-note { font-size: 0.85rem; color: #555; margin-bottom: 0.75rem; }
     </style>
 </head>
 <body>
@@ -137,10 +151,26 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
                     <span class="section-chevron" aria-hidden="true"></span>
                     <h2 id="training-title" class="group-title">RL Environments</h2>
                 </summary>
-                <div class="group-content">
-                    <p>1,000+ RTL design tasks with automated reward grading.</p>
-                    <p>Task specifications, testbenches, reference implementations, and evaluation records.</p>
+                <div class="group-content rl-offer">
+                    <p class="rl-offer-lead">1,000+ RTL design tasks.</p>
+                    <p>For spec-to-RTL tasks, models write RTL from specifications; automated tests award verifiable, partial-credit rewards.</p>
+                    <p>Includes specifications, testbenches, reference implementations, and evaluation records.</p>
+                    <figure class="coverage-chart" aria-labelledby="coverage-title">
+                        <figcaption><h3 id="coverage-title">Chip-design coverage</h3><p>Categorized subset: 728 tasks across evaluated collections; shared IDs counted once.</p></figcaption>
+                        <div class="coverage-axis"><span>Chip / task category</span><span>Tasks</span></div>
+                        <div class="coverage-bars" role="img" aria-label="728 categorized tasks: Memory and cache 218; SoC and control 156; Networking and interfaces 150; GPU and media 58; Storage 56; CPU 48; Other RTL logic 35; AI and accelerators 7.">
+                            <div class="coverage-row"><span>Memory &amp; cache</span><div class="coverage-track"><span style="width:100.000%"></span></div><span>218</span></div>
+                            <div class="coverage-row"><span>SoC &amp; control</span><div class="coverage-track"><span style="width:71.560%"></span></div><span>156</span></div>
+                            <div class="coverage-row"><span>Networking &amp; interfaces</span><div class="coverage-track"><span style="width:68.807%"></span></div><span>150</span></div>
+                            <div class="coverage-row"><span>GPU &amp; media</span><div class="coverage-track"><span style="width:26.606%"></span></div><span>58</span></div>
+                            <div class="coverage-row"><span>Storage</span><div class="coverage-track"><span style="width:25.688%"></span></div><span>56</span></div>
+                            <div class="coverage-row"><span>CPU</span><div class="coverage-track"><span style="width:22.018%"></span></div><span>48</span></div>
+                            <div class="coverage-row"><span>Other RTL logic</span><div class="coverage-track"><span style="width:16.055%"></span></div><span>35</span></div>
+                            <div class="coverage-row"><span>AI &amp; accelerators</span><div class="coverage-track"><span style="width:3.211%"></span></div><span>7</span></div>
+                        </div>
+                    </figure>
                     <p>Exclusive or non-exclusive package licensing.</p>
+                    <p class="rl-model-note">Evaluation records include GPT, Fable, and Qwen model families.</p>
                 </div>
             </details>
         </section>
