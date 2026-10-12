@@ -134,6 +134,15 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
 .coverage-track { height: 0.8rem; background: #eee; border-radius: 2px; }
 .coverage-track > span { display: block; height: 100%; min-width: 2px; background: #222; border-radius: 2px; }
 .rl-offer > .rl-model-note { font-size: 0.85rem; color: #555; margin-bottom: 0.75rem; }
+
+.rl-module { margin: 1.5rem 0; }
+.rl-module h3 { font-size: 1.15rem; line-height: 1.25; font-weight: 400; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+.rl-module p { font-size: 1.05rem; line-height: 1.45; margin-bottom: 0.75rem; }
+.rl-module p:last-child { margin-bottom: 0; }
+.rl-flow { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 0.5rem; }
+.rl-flow li { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.8rem; margin: 0; background: #f6f6f6; border-radius: 6px; font-size: 0.9rem; line-height: 1.35; }
+.rl-flow li > span { flex: 0 0 1.3rem; width: 1.3rem; color: #777; font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+.rl-flow li > div { min-width: 0; }
     </style>
 </head>
 <body>
@@ -153,23 +162,48 @@ h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
                 </summary>
                 <div class="group-content rl-offer">
                     <p class="rl-offer-lead">1,000+ RTL design tasks.</p>
-                    <p>For spec-to-RTL tasks, models write RTL from specifications; automated tests award verifiable, partial-credit rewards.</p>
-                    <p>Includes specifications, testbenches, reference implementations, and evaluation records.</p>
+                    <p>A design specification, an RTL workspace, and an automated verifier for hardware-design training.</p>
+                    <section class="rl-module" aria-labelledby="rl-workflow-title">
+                        <h3 id="rl-workflow-title">What the model does</h3>
+                        <p>In spec-to-RTL packages, models implement the specification as synthesizable SystemVerilog.</p>
+                        <ol class="rl-flow" aria-label="Spec-to-RTL grading workflow">
+                            <li><span>1</span><div>Specification + starter RTL</div></li>
+                            <li><span>2</span><div>Model writes SystemVerilog</div></li>
+                            <li><span>3</span><div>EDA checks + hidden simulation</div></li>
+                            <li><span>4</span><div>JSON reward result</div></li>
+                        </ol>
+                    </section>
+                    <section class="rl-module" aria-labelledby="rl-rewards-title">
+                        <h3 id="rl-rewards-title">How rewards work</h3>
+                        <p>Inspected spec-to-RTL packages use 0–1 partial-credit rewards. Hidden tests compare behavior with an independent reference model. Invalid submissions or failed tooling checks receive no reward.</p>
+                    </section>
                     <figure class="coverage-chart" aria-labelledby="coverage-title">
-                        <figcaption><h3 id="coverage-title">Chip-design coverage</h3><p>Categorized subset: 728 tasks across evaluated collections; shared IDs counted once.</p></figcaption>
+                        <figcaption><h3 id="coverage-title">Chip-design coverage</h3><p>1,280 categorized task IDs across authoring and evaluated collections; shared copies counted once.</p></figcaption>
                         <div class="coverage-axis"><span>Chip / task category</span><span>Tasks</span></div>
-                        <div class="coverage-bars" role="img" aria-label="728 categorized tasks: Memory and cache 218; SoC and control 156; Networking and interfaces 150; GPU and media 58; Storage 56; CPU 48; Other RTL logic 35; AI and accelerators 7.">
-                            <div class="coverage-row"><span>Memory &amp; cache</span><div class="coverage-track"><span style="width:100.000%"></span></div><span>218</span></div>
-                            <div class="coverage-row"><span>SoC &amp; control</span><div class="coverage-track"><span style="width:71.560%"></span></div><span>156</span></div>
-                            <div class="coverage-row"><span>Networking &amp; interfaces</span><div class="coverage-track"><span style="width:68.807%"></span></div><span>150</span></div>
-                            <div class="coverage-row"><span>GPU &amp; media</span><div class="coverage-track"><span style="width:26.606%"></span></div><span>58</span></div>
-                            <div class="coverage-row"><span>Storage</span><div class="coverage-track"><span style="width:25.688%"></span></div><span>56</span></div>
-                            <div class="coverage-row"><span>CPU</span><div class="coverage-track"><span style="width:22.018%"></span></div><span>48</span></div>
-                            <div class="coverage-row"><span>Other RTL logic</span><div class="coverage-track"><span style="width:16.055%"></span></div><span>35</span></div>
-                            <div class="coverage-row"><span>AI &amp; accelerators</span><div class="coverage-track"><span style="width:3.211%"></span></div><span>7</span></div>
+                        <div class="coverage-bars" role="img" aria-label="1280 categorized task IDs across authoring and evaluated collections: Memory and cache 383; SoC and control 268; Networking and interfaces 219; CPU 109; Other RTL logic 108; GPU and media 100; Storage 79; AI and accelerators 14.">
+                            <div class="coverage-row"><span>Memory &amp; cache</span><div class="coverage-track"><span style="width:100.000%"></span></div><span>383</span></div>
+                            <div class="coverage-row"><span>SoC &amp; control</span><div class="coverage-track"><span style="width:69.974%"></span></div><span>268</span></div>
+                            <div class="coverage-row"><span>Networking &amp; interfaces</span><div class="coverage-track"><span style="width:57.180%"></span></div><span>219</span></div>
+                            <div class="coverage-row"><span>CPU</span><div class="coverage-track"><span style="width:28.460%"></span></div><span>109</span></div>
+                            <div class="coverage-row"><span>Other RTL logic</span><div class="coverage-track"><span style="width:28.198%"></span></div><span>108</span></div>
+                            <div class="coverage-row"><span>GPU &amp; media</span><div class="coverage-track"><span style="width:26.110%"></span></div><span>100</span></div>
+                            <div class="coverage-row"><span>Storage</span><div class="coverage-track"><span style="width:20.627%"></span></div><span>79</span></div>
+                            <div class="coverage-row"><span>AI &amp; accelerators</span><div class="coverage-track"><span style="width:3.655%"></span></div><span>14</span></div>
                         </div>
                     </figure>
-                    <p>Exclusive or non-exclusive package licensing.</p>
+                    <section class="rl-module" aria-labelledby="rl-delivery-title">
+                        <h3 id="rl-delivery-title">What you receive</h3>
+                        <p>Specifications, starter RTL, public smoke tests, hidden testbenches and reward graders, reference implementations, and evaluation records.</p>
+                    </section>
+                    <section class="rl-module" aria-labelledby="rl-running-title">
+                        <h3 id="rl-running-title">Run and integrate</h3>
+                        <p>Grade candidate RTL with the packaged Python CLI and consume its JSON results in your own training or evaluation loop.</p>
+                        <p>Inspected sample packages include Docker build files for Linux, Python, Icarus Verilog, Verilator, and Yosys. Build and tool requirements are package-specific.</p>
+                    </section>
+                    <section class="rl-module" aria-labelledby="rl-evidence-title">
+                        <h3 id="rl-evidence-title">Evidence and licensing</h3>
+                        <p>Per-task records describe tested models, settings, and revisions. Exclusive or non-exclusive package licensing preserves applicable third-party rights.</p>
+                    </section>
                     <p class="rl-model-note">Evaluation records include GPT, Fable, and Qwen model families.</p>
                 </div>
             </details>
