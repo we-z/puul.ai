@@ -106,6 +106,19 @@ h1 { font-size: min(7rem, 18cqw); line-height: 1; margin-bottom: 2rem; }
 body { min-height: 100svh; }
 .content { margin-top: var(--mobile-offset, 0px); }
 }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+@media (min-width: 721px) and (max-height: 500px) and (orientation: landscape) {
+body { padding-top: clamp(0.75rem, 4svh, 2rem); padding-bottom: max(1rem, env(safe-area-inset-bottom)); padding-left: max(2rem, env(safe-area-inset-left)); padding-right: max(2rem, env(safe-area-inset-right)); }
+.content { gap: clamp(1.5rem, 4vw, 3rem); }
+.details-column { container-type: inline-size; }
+h1 { font-size: min(7rem, 18cqw, 20svh); margin-bottom: 1rem; }
+.hero > p { font-size: clamp(1.1rem, 5svh, 1.625rem); line-height: 1.4; }
+.details-column > section > details > summary .group-title { font-size: clamp(1.5rem, 8cqw, 2.5rem); line-height: 1.12; }
+.details-column > section > details { margin-bottom: clamp(0.75rem, 4svh, 1.5rem); }
+.details-column > .sample-request { padding: 0.75rem 1rem; font-size: 1.2rem; }
+.collapsible-summary > :not(.section-chevron) { min-width: 0; overflow-wrap: anywhere; }
+.group-content, .subgroup-content, .faq-answer, li { overflow-wrap: anywhere; }
+}
     </style>
 </head>
 <body>
@@ -412,7 +425,9 @@ body { min-height: 100svh; }
                 content.style.removeProperty('--mobile-offset');
                 const viewport = window.visualViewport ? window.visualViewport.height : window.innerHeight;
                 const height = hero.getBoundingClientRect().height;
-                const edge = 2 * parseFloat(getComputedStyle(document.documentElement).fontSize);
+                const bodyStyle = getComputedStyle(document.body);
+                const edge = parseFloat(bodyStyle.paddingTop);
+                const bottomEdge = parseFloat(bodyStyle.paddingBottom);
                 const titleSize = parseFloat(getComputedStyle(hero.querySelector('h1')).fontSize);
                 const headingSize = parseFloat(getComputedStyle(right.querySelector('.group-title')).fontSize);
                 const opticalOffset = Math.max(0, (titleSize - headingSize) * 0.16);
@@ -430,10 +445,10 @@ body { min-height: 100svh; }
                 content.append(probe);
                 const closedHeight = probe.getBoundingClientRect().height;
                 probe.remove();
-                content.style.setProperty('--layout-offset', Math.max(0, (viewport - edge * 2 - Math.max(height, closedHeight)) / 2 - 28) + 'px');
+                content.style.setProperty('--layout-offset', Math.max(0, (viewport - edge - bottomEdge - Math.max(height, closedHeight)) / 2 - 28) + 'px');
                 content.style.setProperty('--details-offset', '0px');
-                hero.classList.toggle('is-tall', height > viewport - edge * 2);
-                hero.style.setProperty('--hero-top', (edge + Math.max(0, (viewport - edge * 2 - Math.max(height, closedHeight)) / 2 - 28) - opticalOffset) + 'px');
+                hero.classList.toggle('is-tall', height > viewport - edge - bottomEdge);
+                hero.style.setProperty('--hero-top', (edge + Math.max(0, (viewport - edge - bottomEdge - Math.max(height, closedHeight)) / 2 - 28) - opticalOffset) + 'px');
             }
             function schedule() {
                 if (!scheduled) { scheduled = true; requestAnimationFrame(updateLayout); }
