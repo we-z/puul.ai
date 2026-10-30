@@ -1,10 +1,11 @@
 # Puul aggregate attribution
 
-Deployment status (2026-10-30): the D1 database/table and isolated Worker exist,
-with the DB binding and logging disabled. The dashboard code editor failed to
-load, so the attribution Worker source is not deployed, no Puul routes are bound,
-and the client change is not published. The temporary workers.dev URL is disabled.
-Complete backend deployment and verification before publishing the client.
+Deployment status (2026-10-30): the tested Worker is deployed through the existing
+Cloudflare dashboard (version prefix `83203667`), with its dedicated D1 database,
+DB binding, logging disabled, and narrow endpoint routes. The dashboard editor
+recovered after a temporary loading failure; no API token or Git integration was
+created. Production client ingestion is verified separately after publication.
+The temporary workers.dev URL and preview URLs are disabled.
 
 The static page loads `attribution.js`. It reports one `landing` and at most one
 trusted `email_click` per page lifetime, without changing or delaying the mailto.
@@ -75,3 +76,8 @@ match a specific received email to a visitor, or reconstruct earlier activity.
 Run `node --test cloudflare/attribution.test.mjs` with Node 24 or newer. The tests
 exercise the actual SQLite aggregation and cap, privacy exclusions, invalid
 requests, safe client labels, test exclusion, and the unchanged mailto action.
+All seven tests pass, including synchronous fetch failure, rejected network
+requests, and 404/503 responses without interrupting the contact action or retrying.
+A local Chrome test of the actual client (only the hostname guard adapted for
+localhost) confirmed the POST sends only the origin in Referer, no Cookie, and
+the five approved body fields. Synthetic page path/query values were not sent.

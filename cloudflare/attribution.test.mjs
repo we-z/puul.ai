@@ -60,14 +60,14 @@ test('atomic daily cap prevents aggregate growth after 5000 events', async () =>
   assert.equal(sqlite.prepare('SELECT SUM(count) AS n FROM daily_counts').get().n, 5000);
 });
 const client = readFileSync(new URL('../attribution.js', import.meta.url), 'utf8');
-function runClient({ referrer = '', search = '', hostname = 'puul.ai', privacy = false } = {}) {
+function runClient({ referrer = '', search = '', hostname = 'puul.ai', privacy = false, fetchResult = () => Promise.resolve() } = {}) {
   const calls = [];
   let click;
   vm.runInNewContext(client, {
     location: { hostname, search }, navigator: { globalPrivacyControl: privacy },
     document: { referrer, querySelector() { return { addEventListener(_, fn) { click = fn; } }; } },
     URL, URLSearchParams, Set,
-    fetch(url, options) { calls.push({ url, ...options, data: JSON.parse(options.body) }); return Promise.resolve(); }
+    fetch(url, options) { calls.push({ url, ...options, data: JSON.parse(options.body) }); return fetchResult(); }
   });
   return { calls, click };
 }
@@ -81,6 +81,8 @@ test('client sends bounded labels only, marks verification, and leaves mailto de
   assert.equal(calls[1].data.event, 'email_click');
   assert.equal(calls[1].keepalive, true);
   assert.equal(calls[1].credentials, 'omit');
+  assert.equal(calls[1].referrerPolicy, 'origin');
+  assert.equal(calls[1].url, '/api/attribution');
   assert.equal(JSON.stringify(calls).includes('private-query'), false);
   assert.equal(JSON.stringify(calls).includes('secret@example.com'), false);
 });
@@ -92,4 +94,14 @@ test('client categories unknown referrals safely and honors privacy/hostname bou
   const { calls, click } = runClient();
   click({ isTrusted: false });
   assert.equal(calls.length, 1);
+});
+test('unavailable tracking never prevents the native email action or retries', async () => {
+  for (const fetchResult of [() => Promise.reject(new TypeError('network unavailable')), () => { throw new TypeError('fetch unavailable'); }, () => Promise.resolve({ status: 404 }), () => Promise.resolve({ status: 503 })]) {
+    const { calls, click } = runClient({ fetchResult });
+    assert.equal(typeof click, 'function');
+    assert.doesNotThrow(() => click({ isTrusted: true, preventDefault() { assert.fail('mailto intercepted'); } }));
+    await new Promise(resolve => setImmediate(resolve));
+    click({ isTrusted: true });
+    assert.equal(calls.length, 2);
+  }
 });

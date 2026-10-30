@@ -45,7 +45,7 @@ export default {
       const bytes = new Uint8Array(size);
       let offset = 0;
       for (const chunk of chunks) { bytes.set(chunk, offset); offset += chunk.byteLength; }
-      data = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(bytes));
+      data = JSON.parse(new TextDecoder('utf-8', { fatal: true, ignoreBOM: false }).decode(bytes));
     } catch (_) { return response(400); }
     if (!data || Array.isArray(data) || typeof data !== 'object' || Object.keys(data).length !== FIELDS.length || FIELDS.some(key => typeof data[key] !== 'string') || Object.keys(data).some(key => !FIELDS.includes(key))) return response(400);
     if (!['landing', 'email_click'].includes(data.event) || !SOURCES.has(data.source) || !CAMPAIGN_SOURCES.has(data.utm_source) || !MEDIA.has(data.utm_medium) || !CAMPAIGNS.has(data.utm_campaign)) return response(400);

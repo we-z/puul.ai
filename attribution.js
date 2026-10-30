@@ -38,12 +38,14 @@
     if (sent.has(event)) return;
     sent.add(event);
     // No cookies, storage, identifiers, URL strings, or automatic retries.
-    fetch('/api/attribution', {
-      method: 'POST', mode: 'same-origin', credentials: 'omit',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ event, ...attribution }),
-      keepalive: true, cache: 'no-store', referrerPolicy: 'origin'
-    }).catch(() => {});
+    try {
+      fetch('/api/attribution', {
+        method: 'POST', mode: 'same-origin', credentials: 'omit',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ event, ...attribution }),
+        keepalive: true, cache: 'no-store', referrerPolicy: 'origin'
+      }).catch(() => {});
+    } catch (_) { /* Tracking must never interfere with the native email action. */ }
   }
   record('landing');
   document.querySelector('a.sample-request')?.addEventListener('click', event => {
