@@ -1,0 +1,18 @@
+{
+  "name": "puul-attribution",
+  "main": "attribution-worker.mjs",
+  "compatibility_date": "2026-10-30",
+  "account_id": "d61025eb40eb225a5e647fe6790eb51b",
+  "workers_dev": false,
+  "preview_urls": false,
+  "observability": { "enabled": false },
+  "routes": [
+    { "pattern": "https://puul.ai/api/attribution", "zone_name": "puul.ai" },
+    { "pattern": "https://www.puul.ai/api/attribution", "zone_name": "puul.ai" }
+  ],
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "puul-attribution",
+    "database_id": "c779ecd6-bfdb-41e6-9ba6-a372ed54899e"
+  }]
+}
