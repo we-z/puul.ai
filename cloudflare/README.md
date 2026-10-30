@@ -4,7 +4,13 @@ Deployment status (2026-10-30): the tested Worker is deployed through the existi
 Cloudflare dashboard (version prefix `83203667`), with its dedicated D1 database,
 DB binding, logging disabled, and narrow endpoint routes. The dashboard editor
 recovered after a temporary loading failure; no API token or Git integration was
-created. Production client ingestion is verified separately after publication.
+created. One synthetic POST to the production endpoint returned HTTP 204 and was
+confirmed in D1 as a single `landing` with `utm_campaign=verification`, `is_test=1`,
+and count 1. This is a backend probe, not a browser visit or contact click.
+Client publication is pending: automatic approval review rejected `git push
+origin main` to `github.com/we-z/puul.ai` because it did not recognize publication
+authorization. No workaround or repeat push was attempted. Live browser landing
+and email-click verification must follow approved publication.
 The temporary workers.dev URL and preview URLs are disabled.
 
 The static page loads `attribution.js`. It reports one `landing` and at most one
