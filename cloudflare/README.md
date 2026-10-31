@@ -1,16 +1,20 @@
 # Puul aggregate attribution
 
-Deployment status (2026-10-30): the tested Worker is deployed through the existing
+Deployment status (verified 2026-10-31 UTC): the tested Worker is deployed through the existing
 Cloudflare dashboard (version prefix `83203667`), with its dedicated D1 database,
 DB binding, logging disabled, and narrow endpoint routes. The dashboard editor
 recovered after a temporary loading failure; no API token or Git integration was
 created. One synthetic POST to the production endpoint returned HTTP 204 and was
 confirmed in D1 as a single `landing` with `utm_campaign=verification`, `is_test=1`,
 and count 1. This is a backend probe, not a browser visit or contact click.
-Client publication is pending: automatic approval review rejected `git push
-origin main` to `github.com/we-z/puul.ai` because it did not recognize publication
-authorization. No workaround or repeat push was attempted. Live browser landing
-and email-click verification must follow approved publication.
+The client was published at commit `0fc6299a9e0b8039b63eb40bb3bb8131d936a2f9` after
+explicit user approval. Vercel production deployment `J4qUk17oeccx1iXT8Fb2rVwRdfsi`
+reported Ready. A marked live Chrome visit and actual Request Data click both
+reached D1: the 2026-10-30 UTC test totals were two landings (one backend probe,
+one browser visit) and one email click, all with `is_test=1`. The normal report
+excludes these rows. The live mailto retained root@puul.ai, subject Data request,
+and the original five-field body. Mail opened, but native-app inspection was
+interrupted; no email was sent. The link and tracking were verified independently.
 The temporary workers.dev URL and preview URLs are disabled.
 
 The static page loads `attribution.js`. It reports one `landing` and at most one
